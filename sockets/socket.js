@@ -16,4 +16,17 @@ io.on("connection", (client) => {
 
     io.emit("mensaje", { admin: "Nuevo mensaje" });
   });
+
+  client.on("add-band", (payload) => {
+    console.log(payload);
+  });
+
+  client.on("notification", (payload) => {
+    console.log(payload);
+    client.emit("notification", {
+      id: 0,
+      content: "Nuevo servicio con destino a centro comercial.",
+      title: "Nuevo servicio",
+    });
+  });
 });
